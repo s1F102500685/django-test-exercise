@@ -4,6 +4,8 @@ from django.utils.dateparse import parse_datetime
 from todo.models import Task
 
 # Create your views here.
+
+
 def index(request):
     if request.method == 'POST':
         task = Task(title=request.POST['title'],
@@ -13,7 +15,7 @@ def index(request):
         tasks = Task.objects.order_by('due_at')
     else:
         tasks = Task.objects.order_by('-posted_at')
-        
+
     context = {
         'tasks': tasks
     }
